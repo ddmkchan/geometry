@@ -1,0 +1,166 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>you.ctrip</groupId>
+  <artifactId>geometry</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+
+
+  <name>geometry</name>
+  <url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.target>1.6</maven.compiler.target>
+		<maven.compiler.source>1.6</maven.compiler.source>
+		<spring.version>3.2.5.RELEASE</spring.version>
+	</properties>
+
+	<build>
+		<outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
+		
+		<resources>
+           <resource>
+               <directory>src/main/java</directory>
+               <includes>
+                   <include>**/*.*</include>
+               </includes>
+               <excludes>
+               		<exclude>**/*.java</exclude>
+               </excludes>
+               <filtering>true</filtering>
+           </resource>
+           <resource>
+               <directory>src/main/resources</directory>
+               <includes>
+               	   <include>**/*.xml</include>
+               	   <include>**/log4j.properties</include>
+               </includes>
+               <filtering>true</filtering>
+           </resource>
+       </resources>
+		
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.tomcat.maven</groupId>
+					<artifactId>tomcat7-maven-plugin</artifactId>
+					<version>2.1</version>
+					<configuration>
+						<!-- <server>dev</server> -->
+						<!-- <url>http://192.168.82.8:8180/manager/text</url> <server>test</server> -->
+						<!-- <url>http://192.168.82.9:8080/manager/text</url> <server>uat</server> -->
+ 						<url>http://10.2.8.172:8080/manager/text</url> <server>fat</server>
+						<!-- <url>http://10.2.4.147:8080/manager/text</url> <server>lpt</server> -->
+						<!-- <url>http://10.8.74.15:8080/manager/text</url> <server>online15</server> -->
+						<!-- <url>http://10.8.74.16:8080/manager/text</url> <server>online16</server> -->
+						<path>/geometry</path>
+						<username>admin</username>
+						<password>admin</password>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<finalName>geometry</finalName>
+	</build>
+
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    
+    	<dependency>
+			<groupId>com.ctrip.platform</groupId>
+			<artifactId>dal-java-client</artifactId>
+			<version>1.0.0 </version>
+		</dependency>
+    
+    	<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.3.1</version>
+		</dependency>
+    
+    		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.27</version>
+		</dependency>
+		<dependency>
+			<groupId>com.microsoft.sqlserver</groupId>
+			<artifactId>sqljdbc</artifactId>
+			<version>4.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.1.37</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpcore</artifactId>
+			<version>4.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.2</version>
+		</dependency>
+				
+		<dependency>
+			<groupId>com.ctrip.freeway</groupId>
+			<artifactId>central-logging-agent-aggregator</artifactId>
+			<version>2.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ctrip.freeway</groupId>
+			<artifactId>central-logging-agent</artifactId>
+			<version>2.0.10</version>
+		</dependency>
+				
+	    <dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.16</version>
+		</dependency>				
+  </dependencies>
+</project>
