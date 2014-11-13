@@ -11,25 +11,16 @@ public class ForTest {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-//		ArrayList<Double> latList = new ArrayList<Double>();
-//		latList.add(0.01);
-//		latList.add(0.01);
-//		latList.add(0.01);
-//		latList.add(0.01);
-//		Collections.sort(latList);
-//		System.out.println(latList.size());
-		ConvexHull convexHull = new ConvexHull();
-		ArrayList<LatLngEntity> list = new ArrayList<LatLngEntity>();
-		list.add(new LatLngEntity(102.72056702465,25.0206639155639));
-		list.add(new LatLngEntity(102.72056702465,25.0206639155639));
-		list.add(new LatLngEntity(102.72056702465,25.0206639155639));
-		list.add(new LatLngEntity(102.72056702465,25.0206639155639));
-		list.add(new LatLngEntity(102.72056702465,25.0206639155639));
+		list.add(new LatLngEntity(0.0, 1.0));
+		list.add(new LatLngEntity(0.0, 0.0));
+		list.add(new LatLngEntity(1.0, 1.0));
+		list.add(new LatLngEntity(2.0, 0.0));
+		list.add(new LatLngEntity(1.0, 2.0));
+		list.add(new LatLngEntity(1.0, 2.0));
 		try {
-			ArrayList<LatLngEntity> convexHullPts = convexHull.getConvexHull(list);
+			ArrayList<LatLngEntity> convexHullPts = convexHull.getConvexHull(list);//计算凸包多边形
 			Polygon poly = new Polygon(convexHullPts);
-			System.out.println(poly);
+			System.out.println(poly.containsLatLng(new LatLngEntity(1.0, 1.0), convexHullPts));
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
