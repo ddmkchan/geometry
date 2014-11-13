@@ -61,7 +61,7 @@ public class ZoneRangeController {
 							ArrayList<LatLngEntity> convexHullPts = convexHull.getConvexHull(pts);//转换成凸多边形
 							if (convexHullPts.size() >= 3) {
 								poly = new Polygon(convexHullPts);
-								boolean iscontain = poly.containsLatLng(inputPoint, convexHullPts);//
+								boolean iscontain = poly.containsLatLng(inputPoint);//
 								if (iscontain) {
 									int gsZoneId = (Integer) me.getKey();
 									String gsZoneName = "";

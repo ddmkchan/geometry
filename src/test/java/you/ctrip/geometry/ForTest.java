@@ -11,6 +11,8 @@ public class ForTest {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		ConvexHull convexHull = new ConvexHull();
+		ArrayList<LatLngEntity> list = new ArrayList<LatLngEntity>();
 		list.add(new LatLngEntity(0.0, 1.0));
 		list.add(new LatLngEntity(0.0, 0.0));
 		list.add(new LatLngEntity(1.0, 1.0));
@@ -18,9 +20,10 @@ public class ForTest {
 		list.add(new LatLngEntity(1.0, 2.0));
 		list.add(new LatLngEntity(1.0, 2.0));
 		try {
-			ArrayList<LatLngEntity> convexHullPts = convexHull.getConvexHull(list);//¼ÆËãÍ¹°ü¶à±ßÐÎ
+			ArrayList<LatLngEntity> convexHullPts = convexHull.getConvexHull(list);//å‡¸åŒ…å¤šè¾¹å½¢
+			
 			Polygon poly = new Polygon(convexHullPts);
-			System.out.println(poly.containsLatLng(new LatLngEntity(1.0, 1.0), convexHullPts));
+			System.out.println(poly.containsLatLng(new LatLngEntity(1.0, 1.0)));
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}

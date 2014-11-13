@@ -7,7 +7,7 @@ import you.ctrip.entity.LatLngEntity;
 
 public class Polygon {
 
-
+	private ArrayList<LatLngEntity> ConvexHullPts = null;
 	Bounds bounds = null;
 	public Bounds getBounds() {
 		return bounds;
@@ -37,16 +37,15 @@ public class Polygon {
 		maxlatlngEntity = new LatLngEntity(latList.get(latList.size()-1), lngList.get(lngList.size()-1));
 		
 		bounds = new Bounds(minlatlngEntity, maxlatlngEntity);
-		
+		ConvexHullPts = pts;
 
 	}
 	
 	//根据给点经纬度对象，判断是否在对应的多边形区域
-	public boolean containsLatLng(LatLngEntity latlng, ArrayList<LatLngEntity> pts) {
+	public boolean containsLatLng(LatLngEntity latlng) {
 
-		ArrayList<LatLngEntity> path = null;//给定的多个坐标点列表
 		//多边形区域的顶点也属于该区域范围
-		for (LatLngEntity lg : pts) {
+		for (LatLngEntity lg : ConvexHullPts) {
 			if (lg.getLat() == latlng.getLat() && lg.getLng() == latlng.getLng()) {
 				return true;
 			}
@@ -57,12 +56,11 @@ public class Polygon {
 		}
 		
 		boolean inpoly = false;
-		path = pts;
-		int j = path.size()-1;
+		int j = ConvexHullPts.size()-1;
 		
-		for (int i=0; i<path.size(); i++) {
-			LatLngEntity vertex1 = path.get(i);
-			LatLngEntity vertex2 = path.get(j);
+		for (int i=0; i<ConvexHullPts.size(); i++) {
+			LatLngEntity vertex1 = ConvexHullPts.get(i);
+			LatLngEntity vertex2 = ConvexHullPts.get(j);
 			
 			if (vertex1.getLng() < latlng.getLng() && vertex2.getLng() >= latlng.getLng()
 					|| vertex2.getLng() < latlng.getLng() && vertex1.getLng() >= latlng.getLng()) {
